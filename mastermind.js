@@ -60,11 +60,11 @@ function renderCurrentGuess() {
     renderModeButtons();
     const guessesDiv = document.getElementById('guesses');
     let html = '';
-    // Affiche les anciennes propositions
+
     guesses.forEach(g => {
         html += renderGuessRow(g.guess, g.feedback);
     });
-    // Affiche la proposition en cours
+
     if (!gameOver) {
         html += renderGuessRow(currentGuess, null, true);
     }
@@ -95,7 +95,7 @@ function getFeedback(guess, secret) {
     let feedback = [];
     let secretUsed = Array(COMB_LEN).fill(false);
     let guessUsed = Array(COMB_LEN).fill(false);
-    // Noir : bonne couleur, bonne place
+
     for (let i = 0; i < COMB_LEN; i++) {
         if (guess[i] === secret[i]) {
             feedback.push('black');
@@ -103,7 +103,6 @@ function getFeedback(guess, secret) {
             guessUsed[i] = true;
         }
     }
-    // Blanc : bonne couleur, mauvaise place
     for (let i = 0; i < COMB_LEN; i++) {
         if (!guessUsed[i]) {
             for (let j = 0; j < COMB_LEN; j++) {
@@ -115,9 +114,9 @@ function getFeedback(guess, secret) {
             }
         }
     }
-    // Complète à 4/6/8
+
     while (feedback.length < COMB_LEN) feedback.push('');
-    // Pour l'affichage, on met les noirs d'abord puis les blancs
+
     feedback = feedback.filter(f => f === 'black').concat(feedback.filter(f => f === 'white')).concat(feedback.filter(f => f === ''));
     return feedback;
 }
@@ -170,7 +169,7 @@ function renderColorLegend() {
 document.getElementById('submitGuess').onclick = submitGuess;
 document.getElementById('submitGuess').classList.add('master-action');
 
-// Permet de retirer une couleur de la proposition en cours (tap sur une pastille déjà posée)
+
 document.getElementById('guesses').addEventListener('click', function(e) {
     if (gameOver) return;
     if (e.target.classList.contains('color-btn')) {
@@ -182,7 +181,6 @@ document.getElementById('guesses').addEventListener('click', function(e) {
     }
 });
 
-// Ajoute un bouton recommencer si on veut
 const mastermindContainer = document.getElementById('mastermindContainer');
 const restartBtn = document.createElement('button');
 restartBtn.textContent = 'Nouvelle partie';

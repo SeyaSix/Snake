@@ -16,19 +16,19 @@ function drawNeonRect(x, y, color) {
 }
 
 function draw() {
-    // Fond futuriste
+
     ctx.fillStyle = '#11131a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Serpent
+
     for (let i = 0; i < snake.length; i++) {
         drawNeonRect(snake[i].x, snake[i].y, i === 0 ? '#00fff7' : '#00bfff');
     }
 
-    // Nourriture
+
     drawNeonRect(food.x, food.y, '#ff00ea');
 
-    // Score
+
     document.getElementById('score').innerText = 'Score : ' + score;
 }
 
@@ -43,13 +43,13 @@ function update() {
         default: return;
     }
 
-    // Passage à travers les bords (effet tore)
+ 
     if (head.x < 0) head.x = canvas.width - box;
     else if (head.x >= canvas.width) head.x = 0;
     if (head.y < 0) head.y = canvas.height - box;
     else if (head.y >= canvas.height) head.y = 0;
 
-    // Collision avec soi-même
+
     if (collision(head, snake)) {
         clearInterval(gameInterval);
         ctx.font = '2em Orbitron, Arial';
@@ -63,7 +63,7 @@ function update() {
 
     snake.unshift(head);
 
-    // Manger la nourriture
+
     if (head.x === food.x && head.y === food.y) {
         score++;
         food = spawnFood();
@@ -150,7 +150,7 @@ window.addEventListener('keydown', e => {
     }
 });
 
-// Amélioration de la réactivité mobile : gestion du tactile pour les boutons directionnels
+
 ['btnUp', 'btnDown', 'btnLeft', 'btnRight'].forEach(id => {
     const btn = document.getElementById(id);
     if (btn) {

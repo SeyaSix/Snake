@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SnakeSix3</h1>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="score">Score : 0</div>
+    <button id="restartBtn" onclick="restartGame()">Recommencer</button>
+    <a href="mastermind.html" id="mastermindBtn">Mastermind</a>
+    <div id="mobileControls">
+        <div class="row">
+            <button class="dir-btn" id="btnUp" onclick="moveDirection('UP')">▲</button>
+        </div>
+        <div class="row">
+            <button class="dir-btn" id="btnLeft" onclick="moveDirection('LEFT')">◀</button>
+            <button class="dir-btn" id="btnDown" onclick="moveDirection('DOWN')">▼</button>
+            <button class="dir-btn" id="btnRight" onclick="moveDirection('RIGHT')">▶</button>
+        </div>
+    </div>
+    <script src="snake.js"></script>
+</body>
+</html> 
